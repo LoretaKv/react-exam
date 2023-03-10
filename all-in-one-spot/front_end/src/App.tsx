@@ -1,5 +1,9 @@
-import { Box } from "@mui/material";
+import { MainRouter } from "./components/MainRouter/MainRouter";
 
 export const App = () => {
-  return <Box className="App">ALL IN ONE</Box>;
+  return (
+    <div>
+      <MainRouter />
+    </div>
+  );
 };
