@@ -1,11 +1,18 @@
-import { Label } from "@mui/icons-material";
-import { Button, Input, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  Input,
+  InputLabel,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { theme } from "../Header/HeaderTheme";
 
-export const SignIn = () => {
+export const UserSignIn = () => {
   const [signInUser, setsignInUser] = useState({
     email: null,
     password: null,
@@ -35,9 +42,10 @@ export const SignIn = () => {
         email: signInUser.email,
         password: signInUser.password,
       })
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
         resetForm();
-        navigate("/products");
+        navigate("/sale");
       })
       .catch(() => {
         alert("Incorrect email or password");
@@ -46,27 +54,47 @@ export const SignIn = () => {
   };
 
   return (
-    <>
+    <Card
+      sx={{
+        marginTop: "20px",
+        textAlign: "center",
+        margin: "0 auto",
+        display: "grid",
+        maxHeight: { xs: 500, md: 500, lg: 1000 },
+        maxWidth: { xs: 350, md: 500, lg: 1200 },
+        width: "40%",
+      }}
+    >
       <Box border="2px,solid, grey">
-        <Typography>Sign in:</Typography>
+        <ThemeProvider theme={theme}>
+          <Typography marginY="20px" fontSize="30px">
+            SIGN IN
+          </Typography>
+        </ThemeProvider>
       </Box>
+
       <form onSubmit={handleSubmit}>
         <Box>
-          <Label>Your Email:</Label>
+          <InputLabel>Your Email:</InputLabel>
           <Input
-            sx={{ border: "1px solid green", borderRadius: 1 }}
+            sx={{ border: "1px solid green", borderRadius: 1, width: "40%" }}
             disableUnderline
-            size="medium"
             name="email"
             type="email"
             value={signInUser.email ?? ""}
             onChange={(event) => handleInputChange(event, "email")}
           />
         </Box>
+
         <Box>
-          <Label>Your Password:</Label>
+          <InputLabel>Your Password:</InputLabel>
           <Input
-            sx={{ border: "1px solid green", borderRadius: 1 }}
+            sx={{
+              marginTop: "10px",
+              border: "1px solid green",
+              borderRadius: 1,
+              width: "40%",
+            }}
             disableUnderline
             size="medium"
             name="password"
@@ -76,8 +104,10 @@ export const SignIn = () => {
           />
         </Box>
 
-        <Button type="submit">Submit</Button>
+        <Button sx={{ color: "green", fontSize: "20px" }} type="submit">
+          GET SHOPPING
+        </Button>
       </form>
-    </>
+    </Card>
   );
 };

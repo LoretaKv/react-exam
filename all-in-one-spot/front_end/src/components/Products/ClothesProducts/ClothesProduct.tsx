@@ -1,13 +1,13 @@
 import { type FC, useContext } from "react";
-import type { TproductProps } from "../ProductsCategories/types";
 import { ProductsContext } from "../ProductsContext";
-import { ProductActionButton } from "../ProductActionButton";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
+import { ProductActionButton } from "../ProductActionButton";
+import { TproductProps } from "../ProductsCategories/types";
 import { Grid } from "@mui/material";
 
-export const CosmeticProduct: FC<TproductProps> = ({ product }) => {
+export const ClothesProduct: FC<TproductProps> = ({ product }) => {
   const { cartProducts } = useContext(ProductsContext);
 
   const curewncyFormat = new Intl.NumberFormat(navigator.language, {
@@ -15,13 +15,13 @@ export const CosmeticProduct: FC<TproductProps> = ({ product }) => {
     currency: "EUR",
   });
 
-  const cartProductAmount = (id: number) => {
-    return cartProducts.find((product) => product.id === id)?.amount || 0;
-  };
-
   const isProductInCart = cartProducts.some(
     (cartProduct) => cartProduct.id === product.id
   );
+
+  const cartProductAmount = (id: number) => {
+    return cartProducts.find((product) => product.id === id)?.amount || 0;
+  };
 
   return (
     <Grid container>
@@ -43,7 +43,7 @@ export const CosmeticProduct: FC<TproductProps> = ({ product }) => {
           }}
           variant="body2"
         >
-          {product.name}
+          {product.title}
         </Typography>
         <Box
           sx={{
@@ -55,7 +55,7 @@ export const CosmeticProduct: FC<TproductProps> = ({ product }) => {
             },
           }}
         >
-          <img alt={product.name || "Product image"} src={product.image} />
+          <img alt={product.title || "Product image"} src={product.image} />
         </Box>
 
         <Typography> {curewncyFormat.format(product.price)}</Typography>

@@ -2,8 +2,9 @@ import { Dispatch } from "react";
 
 export type TProduct = {
   id: number;
-  name: string | null;
-  price: number | null;
+  name: string;
+  title: string;
+  price: number;
   image: string;
   rating: {
     rate: number | null;
@@ -18,7 +19,6 @@ export type TCartProduct = TProduct & {
 export type TProductsContext = {
   fetchedProducts: Readonly<TProduct[]>;
   cartProducts: Readonly<TCartProduct[]>;
-
   dispatch: Dispatch<TProductsAction>;
 };
 

@@ -1,9 +1,17 @@
-import { Label } from "@mui/icons-material";
-import { Button, Input, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  Input,
+  InputLabel,
+  ThemeProvider,
+  Typography,
+  Paper,
+} from "@mui/material";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { theme } from "../Header/HeaderTheme";
 
 export const NewUserRegister = () => {
   const [newUser, setNewUser] = useState({
@@ -40,9 +48,9 @@ export const NewUserRegister = () => {
         password: newUser.password,
       })
       .then(() => {
-        alert(`User was created successfully!`);
-
+        alert(`Welcome to "ALL IN ONE SPOT"! Happy Shopping!`);
         resetForm();
+        navigate("/products");
       })
       .catch((error) => {
         console.error(error.response.data.err);
@@ -50,16 +58,28 @@ export const NewUserRegister = () => {
   };
 
   return (
-    <>
-      <Box border="2px,solid, grey">
-        <Typography>Register:</Typography>
+    <Paper
+      sx={{
+        textAlign: "center",
+        margin: "0 auto",
+        display: "grid",
+        maxHeight: { xs: 500, md: 500, lg: 1000 },
+        maxWidth: { xs: 350, md: 500, lg: 1200 },
+      }}
+    >
+      <Box border="2px,solid, grey" padding="10px">
+        <ThemeProvider theme={theme}>
+          <Typography marginY="20px" fontSize="30px">
+            REGISTER
+          </Typography>
+        </ThemeProvider>
       </Box>
+
       <form onSubmit={handleSubmit}>
         <Box>
-          <Label>Name:</Label>
-
+          <InputLabel>Name:</InputLabel>
           <Input
-            sx={{ border: "1px solid green", borderRadius: 1 }}
+            sx={{ border: "1px solid green", borderRadius: 1, width: "30%" }}
             disableUnderline
             size="medium"
             name="Your Name"
@@ -67,10 +87,11 @@ export const NewUserRegister = () => {
             onChange={(event) => handleInputChange(event, "name")}
           />
         </Box>
+
         <Box>
-          <Label>Your Surname:</Label>
+          <InputLabel>Your Surname:</InputLabel>
           <Input
-            sx={{ border: "1px solid green", borderRadius: 1 }}
+            sx={{ border: "1px solid green", borderRadius: 1, width: "30%" }}
             disableUnderline
             size="medium"
             name="Your Surname"
@@ -78,10 +99,11 @@ export const NewUserRegister = () => {
             onChange={(event) => handleInputChange(event, "surname")}
           />
         </Box>
+
         <Box>
-          <Label>Your Email:</Label>
+          <InputLabel>Your Email:</InputLabel>
           <Input
-            sx={{ border: "1px solid green", borderRadius: 1 }}
+            sx={{ border: "1px solid green", borderRadius: 1, width: "30%" }}
             disableUnderline
             size="medium"
             name="email"
@@ -90,10 +112,11 @@ export const NewUserRegister = () => {
             onChange={(event) => handleInputChange(event, "email")}
           />
         </Box>
+
         <Box>
-          <Label>Your Password:</Label>
+          <InputLabel>Your Password:</InputLabel>
           <Input
-            sx={{ border: "1px solid green", borderRadius: 1 }}
+            sx={{ border: "1px solid green", borderRadius: 1, width: "30%" }}
             disableUnderline
             size="medium"
             name="password"
@@ -102,11 +125,17 @@ export const NewUserRegister = () => {
             onChange={(event) => handleInputChange(event, "password")}
           />
         </Box>
-        <Link to="/" onClick={() => navigate(-1)}>
-          Cancel
-        </Link>
-        <Button type="submit">Submit</Button>
+
+        <Box display="grid" textAlign="center" marginBottom="20px">
+          <Button sx={{ padding: "30px" }} type="submit">
+            Register
+          </Button>
+
+          <Link to="/" onClick={() => navigate(-1)}>
+            Cancel
+          </Link>
+        </Box>
       </form>
-    </>
+    </Paper>
   );
 };

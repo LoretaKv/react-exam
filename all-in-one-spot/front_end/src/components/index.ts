@@ -1,1 +1,15 @@
-export type { TNewUser } from "./Users/types";
+export { Cart } from "./Cart";
+export { CartButton } from "./Cart/CartButtonContainer";
+export { Footer } from "./Footer/Footer";
+export { Header } from "./Header/Header";
+export { theme } from "./Header/HeaderTheme";
+export { NavContainer } from "./NavContainer";
+export { PageNotFound } from "./PageNotFound/PageNotFound";
+export { CosmeticProducts } from "./Products/CosmeticProducts/CosmeticProducts";
+export { ProductsCategories } from "./Products/ProductsCategories/ProductsCategories";
+export { ProductsContext } from "./Products/ProductsContext";
+export { SaleProducts } from "./Products/SaleProducts/SaleProducts";
+export { ProductActionButton } from "./Products/ProductActionButton";
+export { UserNavigation } from "./Users/UserNavigation/UserNavigation";
+export { NewUserRegister } from "./Users/NewUserRegister";
+export { UserSignIn } from "./Users/UserSignIn";

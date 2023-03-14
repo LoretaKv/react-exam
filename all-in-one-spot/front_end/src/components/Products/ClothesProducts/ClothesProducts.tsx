@@ -3,23 +3,24 @@ import axios from "axios";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { ProductsContext } from "../ProductsContext";
-import { CosmeticProduct } from "./CosmeticProduct";
+import { ClothesProduct } from "./ClothesProduct";
 import { CartButton } from "../../Cart/CartButtonContainer";
 
-export const CosmeticProducts = () => {
+export const ClothesProducts = () => {
   const { dispatch, fetchedProducts } = useContext(ProductsContext);
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/cosmetics`)
+      .get(`http://localhost:5000/clothes`)
       .then((res) =>
         dispatch({
           type: "setProducts",
           payload: { fetchedProducts: res.data },
         })
       )
+
       .catch((error) => console.error(error))
       .finally(() => setIsLoading(false));
   }, [dispatch]);
@@ -40,7 +41,7 @@ export const CosmeticProducts = () => {
           <Grid
             sx={{
               p: 2,
-              bgcolor: "background.default",
+
               display: "grid",
               gridTemplateColumns: {
                 md: " 1fr 1fr 1fr 1fr 1fr",
@@ -50,7 +51,7 @@ export const CosmeticProducts = () => {
             }}
           >
             {fetchedProducts.map((product) => (
-              <CosmeticProduct key={product.id} product={product} />
+              <ClothesProduct key={product.id} product={product} />
             ))}
           </Grid>
         </Box>

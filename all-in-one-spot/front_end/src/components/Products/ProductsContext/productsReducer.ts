@@ -64,6 +64,5 @@ export const productsReducer = (
       console.log("no Case matched");
       break;
   }
-  console.log(action.payload);
   return state;
 };

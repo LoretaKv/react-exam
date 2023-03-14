@@ -1,8 +1,7 @@
 import { Button } from "@mui/material";
 import { FC, useContext } from "react";
+import { TProductActionButtonProps } from "./ProductsCategories/types";
 import { ProductsContext } from "./ProductsContext";
-
-import { TProductActionButtonProps } from "./types";
 
 export const ProductActionButton: FC<TProductActionButtonProps> = ({
   title,
@@ -14,7 +13,7 @@ export const ProductActionButton: FC<TProductActionButtonProps> = ({
   return (
     <Button
       sx={{ width: 30, height: 30 }}
-      color="primary"
+      color="success"
       variant="contained"
       size="small"
       onClick={() => dispatch({ type, payload: { productId } })}
