@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import type { FC } from "react";
 import Typography from "@mui/material/Typography";
 import { Grid, ThemeProvider } from "@mui/material";

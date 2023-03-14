@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It was build on Node package Manager via file package.json.
 
-Also was used the following dependencies: node.js, My SQL database, and Mui Material.
+Also was used the following libraries: node.js, My SQL database, and Mui Material.
 
 To start the project simply entrer npm start and you will get it running.
 
