@@ -36,6 +36,7 @@ export const CartButton = () => {
           <Typography padding="3px" variant="h3" color="Grey">
             GET 20% OFF WITH THE CODE "SPRING"
           </Typography>
+          <Card sx={{ width: "200px" }}></Card>
         </Card>
       </ThemeProvider>
       <Link to="/cart">

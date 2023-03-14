@@ -4,10 +4,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const getCosmetics = async (req, res) => {
+export const getClothes = async (req, res) => {
   try {
     const con = await mysql.createConnection(MYSQL_CONFIG);
-    const [results] = await con.execute("SELECT * FROM cosmetic_products");
+    const [results] = await con.execute("SELECT * FROM clothes");
     await con.end();
 
     return res.status(200).send(results).end();
