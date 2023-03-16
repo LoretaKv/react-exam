@@ -15,13 +15,13 @@ export const ClothesProduct: FC<TproductProps> = ({ product }) => {
     currency: "EUR",
   });
 
-  const isProductInCart = cartProducts.some(
-    (cartProduct) => cartProduct.id === product.id
-  );
-
   const cartProductAmount = (id: number) => {
     return cartProducts.find((product) => product.id === id)?.amount || 0;
   };
+
+  const isProductInCart = cartProducts.some(
+    (cartProduct) => cartProduct.id === product.id
+  );
 
   return (
     <Grid container>

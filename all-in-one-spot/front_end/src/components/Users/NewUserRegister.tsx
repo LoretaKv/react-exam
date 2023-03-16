@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   Input,
   InputLabel,
   ThemeProvider,
@@ -50,7 +49,7 @@ export const NewUserRegister = () => {
       .then(() => {
         alert(`Welcome to "ALL IN ONE SPOT"! Happy Shopping!`);
         resetForm();
-        navigate("/products");
+        navigate("/sale");
       })
       .catch((error) => {
         console.error(error.response.data.err);
