@@ -15,7 +15,7 @@ export const ClothesProduct: FC<TproductProps> = ({ product }) => {
     currency: "EUR",
   });
 
-  const cartProductAmount = (id: number) => {
+  const getCartProductAmount = (id: number) => {
     return cartProducts.find((product) => product.id === id)?.amount || 0;
   };
 
@@ -25,15 +25,19 @@ export const ClothesProduct: FC<TproductProps> = ({ product }) => {
 
   return (
     <Grid container>
-      <Card
+      <Grid
+        item
+        xs={9}
+        md={6}
+        lg={4}
         sx={{
-          width: 300,
           height: 300,
           p: 3,
           maxHeight: { xs: 500, md: 500, lg: 1000 },
           maxWidth: { xs: 300, md: 700, lg: 1200 },
         }}
       >
+        {" "}
         <Typography
           sx={{
             textAlign: "center",
@@ -57,9 +61,7 @@ export const ClothesProduct: FC<TproductProps> = ({ product }) => {
         >
           <img alt={product.title || "Product image"} src={product.image} />
         </Box>
-
         <Typography> {curewncyFormat.format(product.price)}</Typography>
-
         <Box
           display="flex"
           justifyContent="center"
@@ -86,7 +88,7 @@ export const ClothesProduct: FC<TproductProps> = ({ product }) => {
                 type="addProduct"
                 productId={product.id}
               />
-              <Typography>{cartProductAmount(product.id)}</Typography>
+              <Typography>{getCartProductAmount(product.id)}</Typography>
               <ProductActionButton
                 title="-"
                 type="removeProduct"
@@ -95,7 +97,7 @@ export const ClothesProduct: FC<TproductProps> = ({ product }) => {
             </Box>
           )}
         </Box>
-      </Card>
+      </Grid>
     </Grid>
   );
 };

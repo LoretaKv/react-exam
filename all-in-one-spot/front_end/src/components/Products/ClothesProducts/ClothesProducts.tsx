@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import { ProductsContext } from "../ProductsContext";
 import { ClothesProduct } from "./ClothesProduct";
 import { CartButton } from "../../Cart/CartButtonContainer";
+import { Dirent } from "fs";
 
 export const ClothesProducts = () => {
   const { dispatch, fetchedProducts } = useContext(ProductsContext);
@@ -41,11 +42,10 @@ export const ClothesProducts = () => {
           <Grid
             sx={{
               p: 2,
+              justifyContent: "center",
+              display: "flex",
+              flexDirection: "column",
 
-              display: "grid",
-              gridTemplateColumns: {
-                md: " 1fr 1fr 1fr 1fr 1fr",
-              },
               gap: "20px",
               textAlign: "center",
             }}
