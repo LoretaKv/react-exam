@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const getClothes = async (req, res) => {
+export const getClothes = async (_, res) => {
   try {
     const con = await mysql.createConnection(MYSQL_CONFIG);
     const [results] = await con.execute("SELECT * FROM clothes");

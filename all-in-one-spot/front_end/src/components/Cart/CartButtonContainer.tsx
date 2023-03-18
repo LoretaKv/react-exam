@@ -10,12 +10,6 @@ import { ThemeProvider } from "@mui/material/styles";
 export const CartButton = () => {
   const { cartProducts } = useContext(ProductsContext);
 
-  const totalCartAmount = cartProducts.reduce(
-    (curAmount, cartProduct) =>
-      curAmount + (cartProduct.amount || 0) + cartProduct.amount,
-    0
-  );
-
   return (
     <Box
       component="aside"
@@ -52,7 +46,7 @@ export const CartButton = () => {
               paddingLeft: "325px",
             }}
           >
-            {totalCartAmount}
+            {cartProducts.length}
           </Typography>
         </ThemeProvider>
 
